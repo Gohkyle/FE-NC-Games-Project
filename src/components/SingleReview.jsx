@@ -5,14 +5,18 @@ import like from "../svg/like.svg";
 import comment from "../svg/comment.svg";
 import { formatDate } from "../utils/utils";
 import { UserIcon } from "./UserIcon";
+import {Loading} from './Loading'
 
 export const SingleReview = () => {
+
   const [review, setReview] = useState({});
+  const [isLoading, setIsLoading] = useState(true)
   const { review_id } = useParams();
 
   useEffect(() => {
     getReview(review_id).then((reviewFromApi) => {
       setReview(reviewFromApi);
+      setIsLoading(false)
     });
   }, [review_id]);
 
@@ -27,6 +31,7 @@ export const SingleReview = () => {
     review_body,
   } = review;
   return (
+    isLoading ? <Loading/> : 
     <main className="single-review-container">
           <h4 className= "single-review-header">{title}</h4>
         <img
