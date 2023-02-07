@@ -6,6 +6,7 @@ import comment from "../svg/comment.svg";
 import { formatDate } from "../utils/utils";
 import { UserIcon } from "./UserIcon";
 import {Loading} from './Loading'
+import {Comments} from './Comments'
 
 export const SingleReview = () => {
 
@@ -43,15 +44,15 @@ export const SingleReview = () => {
       <UserIcon owner={owner} />
           <p>{designer}</p>
           <p>{formatDate(created_at)}</p>
+        <p>{review_body}</p>
           <p>
             {votes}
             <img alt="votes" src={like} /> , {comment_count}
             <img alt="comments" src={comment} />{" "}
           </p>
+      <Comments/>
         </div>
-      <section className="single-review-body">
-        <p>{review_body}</p>
-      </section>
+
     </main>
   );
 };
