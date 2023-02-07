@@ -17,3 +17,11 @@ export const getReview = (review_id) => {
       return review;
     });
 };
+
+export const getCommentsByReview = (review_id) => {
+  return ncGamesApi
+    .get(`/reviews/${review_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
+};
