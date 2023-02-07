@@ -3,11 +3,13 @@ import { getCommentsByReview } from "../utils/api-requests";
 import {Loading} from "./Loading";
 import { Comment } from "./Comment";
 import { useParams } from "react-router-dom";
-
+import {AddComment} from './AddComment';
 export const Comments = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
   const { review_id } = useParams();
+
 
   useEffect(() => {
     getCommentsByReview(review_id).then((commentsFromApi) => {
@@ -19,6 +21,7 @@ export const Comments = () => {
   return (
     <section>
       <p>Comments</p>
+      <AddComment/>
       {isLoading ? (<Loading />) : (
         <ul className="comment-list">
           {comments.map((comment) => {

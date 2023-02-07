@@ -13,6 +13,7 @@ export const SingleReview = () => {
 
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true)
+  const [isHidden, setIsHidden] = useState(true);
   const [localVotes, setLocalVotes] = useState('')
   const [err, setErr] = useState(null)
 
@@ -35,9 +36,9 @@ export const SingleReview = () => {
       setIsLoading(false)
       setLocalVotes(votes)
     });
-  }, [review_id,votes]);
+  }, [review_id,votes, isHidden]);
 
-  const handleClick = (event) => {
+  const handleVoteClick = (event) => {
     event.preventDefault()
     setErr(null)
     setLocalVotes(localVotes + Number(event.target.value))
@@ -48,6 +49,11 @@ export const SingleReview = () => {
         setErr('Something went wrong, please try again.')
     })
   }
+
+const handleCommentClick = (event) => {
+    setIsHidden(false);
+}
+
   return (
     err ? <p>{err}</p> :
     isLoading ? <Loading/> : 
@@ -65,11 +71,11 @@ export const SingleReview = () => {
         <p>{review_body}</p>
           <p>
             {localVotes}
-            <input alt="votes" onClick= {handleClick} type="image" value="1" src={like} /> , 
+            <input alt="votes" onClick= {handleVoteClick} type="image" value="1" src={like} /> 
             {comment_count}
-            <img alt="comments" src={comment} />{" "}
+            <input alt="comments" onClick ={handleCommentClick} type="image" src={comment} />
           </p>
-      <Comments/>
+      {isHidden ? null : <Comments/>}
         </div>
     </main>
   );
