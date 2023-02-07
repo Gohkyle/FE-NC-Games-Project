@@ -50,7 +50,7 @@ export const SingleReview = () => {
     })
   }
 
-const handleCommentClick = (event) => {
+const handleCommentClick = () => {
     setIsHidden(false);
 }
 

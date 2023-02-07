@@ -4,6 +4,8 @@ import {Loading} from "./Loading";
 import { Comment } from "./Comment";
 import { useParams } from "react-router-dom";
 import {AddComment} from './AddComment';
+
+
 export const Comments = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
