@@ -7,19 +7,16 @@ import { formatDate } from "../utils/utils";
 import { UserIcon } from "./UserIcon";
 import {Loading} from './Loading'
 import {Comments} from './Comments'
+import {patchReview} from '../utils/api-requests'
 
 export const SingleReview = () => {
 
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true)
-  const { review_id } = useParams();
+  const [localVotes, setLocalVotes] = useState('')
+  const [err, setErr] = useState(null)
 
-  useEffect(() => {
-    getReview(review_id).then((reviewFromApi) => {
-      setReview(reviewFromApi);
-      setIsLoading(false)
-    });
-  }, [review_id]);
+  const { review_id } = useParams();
 
   const {
     title,
@@ -31,7 +28,28 @@ export const SingleReview = () => {
     owner,
     review_body,
   } = review;
+
+  useEffect(() => {
+    getReview(review_id).then((reviewFromApi) => {
+      setReview(reviewFromApi);
+      setIsLoading(false)
+      setLocalVotes(votes)
+    });
+  }, [review_id,votes]);
+
+  const handleClick = (event) => {
+    event.preventDefault()
+    setErr(null)
+    setLocalVotes(localVotes + Number(event.target.value))
+    patchReview(review_id, event.target.value).then(()=>{
+    })
+    .catch((err)=>{
+        setLocalVotes(localVotes - Number(event.target.value))
+        setErr('Something went wrong, please try again.')
+    })
+  }
   return (
+    err ? <p>{err}</p> :
     isLoading ? <Loading/> : 
     <main className="single-review-container">
           <h4 className= "single-review-header">{title}</h4>
@@ -46,13 +64,13 @@ export const SingleReview = () => {
           <p>{formatDate(created_at)}</p>
         <p>{review_body}</p>
           <p>
-            {votes}
-            <img alt="votes" src={like} /> , {comment_count}
+            {localVotes}
+            <input alt="votes" onClick= {handleClick} type="image" value="1" src={like} /> , 
+            {comment_count}
             <img alt="comments" src={comment} />{" "}
           </p>
       <Comments/>
         </div>
-
     </main>
   );
 };
