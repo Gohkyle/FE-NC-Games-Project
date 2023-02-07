@@ -25,3 +25,13 @@ export const getCommentsByReview = (review_id) => {
       return comments;
     });
 };
+
+export const patchReview = (review_id, vote) => {
+  return ncGamesApi
+    .patch(`/reviews/${review_id}`, {
+      inc_votes: vote,
+    })
+    .then(({ data: { updatedReview } }) => {
+      return updatedReview;
+    });
+};
