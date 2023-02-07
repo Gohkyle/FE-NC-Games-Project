@@ -30,23 +30,45 @@
   grid-row:1/2;
   text-align:left;
   font-size: 1em;
-
  }
 
+ .single-review-container{
+  margin:auto;
+  text-align: left;
+ }
+
+ .single-review-img{
+  object-fit: cover;
+  width:100vw;
+  height:45vh;
+ }
+
+ .single-review-body{
+  padding-left: 5vw;
+  padding-right:5vw;
+}
+.single-review-header{
+  padding-left: 5vw;
+  padding-right:5vw;
+}
+.single-review-details{
+  padding-left: 5vw;
+  padding-right:5vw;
+}
 
 
-/* .App-logo {
+/* .loading-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .loading-logo {
+    animation: loading-logo-spin infinite 10s linear;
   }
 }
 
-@keyframes App-logo-spin {
+@keyframes loading-logo-spin {
   from {
     transform: rotate(0deg);
   }

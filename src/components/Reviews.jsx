@@ -1,13 +1,16 @@
 import { getReviews } from "../utils/api-requests";
 import { useState, useEffect } from "react";
 import { ReviewCard } from "./ReviewCard";
+import { Loading } from "./Loading";
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading]= useState(true)
 
   useEffect(() => {
     getReviews().then((reviewsFromApi) => {
         setReviews(reviewsFromApi);
+        setIsLoading(false)
       });
     }
   , []);
@@ -15,6 +18,7 @@ export const Reviews = () => {
   return (
     <main>
         <h2>TITLE</h2>
+        {isLoading ? <Loading/>:
       <ul>
         {reviews.map((review) => {
           return (
@@ -24,7 +28,7 @@ export const Reviews = () => {
             />
           );
         })}
-      </ul>
+      </ul>}
     </main>
   );
 };
