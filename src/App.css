@@ -60,6 +60,7 @@
 .comment-list{
  box-sizing:border-box;
 }
+
 .comment-modal{
   position:fixed;
   z-index:2;

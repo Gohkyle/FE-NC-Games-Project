@@ -8,6 +8,7 @@ import { UserIcon } from "./UserIcon";
 import { Loading } from "./Loading";
 import { Comments } from "./Comments";
 import { patchReview } from "../utils/api-requests";
+import { Error } from "./Error";
 
 export const SingleReview = () => {
   const [review, setReview] = useState({});
@@ -53,12 +54,11 @@ export const SingleReview = () => {
     setIsHidden(false);
   };
 
-  return err ? (
-    <p>{err}</p>
-  ) : isLoading ? (
+  return isLoading ? (
     <Loading />
   ) : (
     <main className="single-review-container">
+      {err ? <Error err={err}/> : null}
       <h4 className="single-review-header">{title}</h4>
       <img
         src={review_img_url}
@@ -87,7 +87,7 @@ export const SingleReview = () => {
             src={comment}
           />
         </p>
-        {isHidden ? null : <Comments setIsHidden={setIsHidden}/>}
+        {isHidden ? null : <Comments setIsHidden={setIsHidden} />}
       </div>
     </main>
   );
