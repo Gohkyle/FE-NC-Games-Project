@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom"
-import {NavBar} from './NavBar'
-export const Header = () => {
-    return (
-    <h1 id="header">
-        <Link to="/">
-        Super Amazing Games Review
-        </Link>
-        <NavBar/>
-    </h1>)
+import { NavBar } from "./NavBar";
 
-}
+export const Header = () => {
+  return (
+    <header>
+      <h1>Super Amazing Games Review</h1>
+      <NavBar />
+    </header>
+  );
+};

@@ -14,8 +14,7 @@ const [categories, setCategories] = useState([])
 
     return (
     <section>
-        <ul>
-
+        <ul className= "category-card-container">
         {categories.map((category)=>{
             return <Category category={category}/>
         })}

@@ -31,7 +31,7 @@ export const Reviews = () => {
         <h2>{formatCategoryName(title)}</h2>
       </div>
         {isLoading ? err ? <Error err={err}/> : <Loading/>:
-      <ul>
+      <ul className="reviews-flex-container">
         {reviews.map((review) => {
           return (
             <ReviewCard

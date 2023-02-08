@@ -8,13 +8,15 @@ export const ReviewCard = ({
 }) => {
   return (
     <li className="review-card">
+        <div className="review-card-img-container">
       <Link to={`/reviews/${review_id}`}>
         <img
           src={review_img_url}
           alt={`BoardGame: ${title}`}
           className="review-card-img"
-        />
+          />
       </Link>
+          </div>
         <div className="review-card-details">
           <h3>{title}</h3>
           <p>{designer}</p>

@@ -24,10 +24,10 @@ export const Comments = ({setIsHidden, setLocalCommentCount}) => {
 
   return (
     <section className="comment-modal">
+      <CloseButton setIsHidden={setIsHidden}/>
       <div className="comment-modal-content">
 
       <p>Comments</p>
-      <CloseButton setIsHidden={setIsHidden}/>
       <AddComment setComments= {setComments} setLocalCommentCount= {setLocalCommentCount}/>
       {isLoading ? (<Loading />) : (
         <ul className="comment-list">
