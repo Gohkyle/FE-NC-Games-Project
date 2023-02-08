@@ -1,4 +1,4 @@
-import like from "../svg/like.svg";
+import upVote from "../svg/up-vote.svg";
 import comment from "../svg/comment.svg";
 import {Link} from "react-router-dom";
 import { formatDate } from "../utils/utils";
@@ -21,7 +21,7 @@ export const ReviewCard = ({
           <p>{formatDate(created_at)}</p>
           <p>
             {votes}
-            <img alt="votes" src={like} /> , {comment_count}
+            <img alt="votes" src={upVote} /> , {comment_count}
             <img alt="comments" src={comment} />{" "}
           </p>
         </div>

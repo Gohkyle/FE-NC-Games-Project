@@ -3,7 +3,6 @@ export const Error = ({ err }) => {
     <div className="error-modal">
       <div className="error-modal-content">
         <p>{err}</p>
-        
       </div>
     </div>
   );

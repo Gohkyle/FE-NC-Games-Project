@@ -1,5 +1,5 @@
 import { formatDateTime } from "../utils/utils";
-import like from "../svg/like.svg";
+import upVote from "../svg/up-vote.svg";
 import avatar from "../svg/avatar.svg";
 
 export const Comment = ({ comment }) => {
@@ -19,7 +19,7 @@ export const Comment = ({ comment }) => {
         <p>{body}</p>
       </div>
       <p className="comment-card-footer">
-        {formatDateTime(created_at)} {votes} <img alt="votes" src={like} />
+        {formatDateTime(created_at)} {votes} <img alt="votes" src={upVote} />
       </p>
     </li>
   );

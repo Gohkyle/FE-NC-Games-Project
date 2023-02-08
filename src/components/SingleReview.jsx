@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { getReview } from "../utils/api-requests";
 import { useParams } from "react-router-dom";
-import like from "../svg/like.svg";
-import comment from "../svg/comment.svg";
 import { formatDate } from "../utils/utils";
 import { UserIcon } from "./UserIcon";
 import { Loading } from "./Loading";
 import { Comments } from "./Comments";
 import { patchReview } from "../utils/api-requests";
 import { Error } from "./Error";
+import {ReviewVoting} from "./ReviewVoting"
+import {ReviewComment} from './ReviewComment'
 
 export const SingleReview = () => {
   const [review, setReview] = useState({});
@@ -43,7 +43,6 @@ export const SingleReview = () => {
     setErr(null);
     setLocalVotes(localVotes + Number(event.target.value));
     patchReview(review_id, event.target.value)
-      .then(() => {})
       .catch((err) => {
         setLocalVotes(localVotes - Number(event.target.value));
         setErr("Something went wrong, please try again.");
@@ -70,23 +69,11 @@ export const SingleReview = () => {
         <p>{designer}</p>
         <p>{formatDate(created_at)}</p>
         <p>{review_body}</p>
-        <p>
-          {localVotes}
-          <input
-            alt="votes"
-            onClick={handleVoteClick}
-            type="image"
-            value="1"
-            src={like}
-          />
-          {comment_count}
-          <input
-            alt="comments"
-            onClick={handleCommentClick}
-            type="image"
-            src={comment}
-          />
-        </p>
+        <span>
+          <ReviewVoting handleVoteClick={handleVoteClick} localVotes={localVotes}/> 
+          <ReviewComment handleCommentClick={handleCommentClick} comment_count = {comment_count}/>
+
+        </span>
         {isHidden ? null : <Comments setIsHidden={setIsHidden} />}
       </div>
     </main>
