@@ -4,10 +4,13 @@ const ncGamesApi = axios.create({
   baseURL: "https://kyles-super-amazing-game-review-api.onrender.com/api",
 });
 
-export const getReviews = (category) => {
+export const getReviews = (category, sortby, order) => {
   if (category) {
     return ncGamesApi
-      .get(`/reviews?category=${category}`)
+      .get(`/reviews`, {
+        category: category,
+        sortby: sortby,
+      })
       .then(({ data: { reviews } }) => {
         return reviews;
       });
