@@ -53,3 +53,9 @@ export const postComment = (review_id, username, body) => {
       return postedComment;
     });
 };
+
+export const getCategories = () => {
+  return ncGamesApi.get("/categories").then(({ data: { categories } }) => {
+    return categories;
+  });
+};
