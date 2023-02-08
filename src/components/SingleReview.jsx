@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { getReview } from "../utils/api-requests";
 import { useParams } from "react-router-dom";
-import like from "../svg/like.svg";
-import comment from "../svg/comment.svg";
 import { formatDate } from "../utils/utils";
 import { UserIcon } from "./UserIcon";
-import {Loading} from './Loading'
-import {Comments} from './Comments'
-import {patchReview} from '../utils/api-requests'
+import { Loading } from "./Loading";
+import { Comments } from "./Comments";
+import { Error } from "./Error";
+import {ReviewVoting} from "./ReviewVoting"
+import {ReviewComment} from './ReviewComment'
 
 export const SingleReview = () => {
-
   const [review, setReview] = useState({});
-  const [isLoading, setIsLoading] = useState(true)
-  const [localVotes, setLocalVotes] = useState('')
-  const [err, setErr] = useState(null)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
+
+  const [err, setErr] = useState(null);
 
   const { review_id } = useParams();
 
@@ -32,45 +32,33 @@ export const SingleReview = () => {
   useEffect(() => {
     getReview(review_id).then((reviewFromApi) => {
       setReview(reviewFromApi);
-      setIsLoading(false)
-      setLocalVotes(votes)
+      setIsLoading(false);
     });
-  }, [review_id,votes]);
+  }, [review_id]);
 
-  const handleClick = (event) => {
-    event.preventDefault()
-    setErr(null)
-    setLocalVotes(localVotes + Number(event.target.value))
-    patchReview(review_id, event.target.value).then(()=>{
-    })
-    .catch((err)=>{
-        setLocalVotes(localVotes - Number(event.target.value))
-        setErr('Something went wrong, please try again.')
-    })
-  }
-  return (
-    err ? <p>{err}</p> :
-    isLoading ? <Loading/> : 
+  return isLoading ? (
+    <Loading />
+  ) : (
     <main className="single-review-container">
-          <h4 className= "single-review-header">{title}</h4>
-        <img
-          src={review_img_url}
-          alt={`BoardGame: ${title}`}
-          className="single-review-img"
+      <h4 className="single-review-header">{title}</h4>
+      <img
+        src={review_img_url}
+        alt={`BoardGame: ${title}`}
+        className="single-review-img"
         />
-        <div className="single-review-details">
-      <UserIcon owner={owner} />
-          <p>{designer}</p>
-          <p>{formatDate(created_at)}</p>
+      <div className="single-review-details">
+        <UserIcon owner={owner} />
+        <p>{designer}</p>
+        <p>{formatDate(created_at)}</p>
         <p>{review_body}</p>
-          <p>
-            {localVotes}
-            <input alt="votes" onClick= {handleClick} type="image" value="1" src={like} /> , 
-            {comment_count}
-            <img alt="comments" src={comment} />{" "}
-          </p>
-      <Comments/>
-        </div>
+        {err ? <Error err={err}/> : null}
+        <span>
+          <ReviewVoting review_id= {review_id} setErr= {setErr} votes={votes}/> 
+          <ReviewComment setIsHidden = {setIsHidden} comment_count = {comment_count}/>
+
+        </span>
+        {isHidden ? null : <Comments setIsHidden={setIsHidden} />}
+      </div>
     </main>
   );
 };

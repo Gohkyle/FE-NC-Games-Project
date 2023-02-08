@@ -35,3 +35,14 @@ export const patchReview = (review_id, vote) => {
       return updatedReview;
     });
 };
+
+export const postComment = (review_id, username, body) => {
+  return ncGamesApi
+    .post(`/reviews/${review_id}/comments`, {
+      username,
+      body,
+    })
+    .then(({ data: { postedComment } }) => {
+      return postedComment;
+    });
+};

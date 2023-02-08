@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { getCommentsByReview } from "../utils/api-requests";
-import {Loading} from "./Loading";
+import { Loading } from "./Loading";
 import { Comment } from "./Comment";
 import { useParams } from "react-router-dom";
+import { AddComment } from './AddComment';
+import { CloseButton } from './CloseButton'
 
-export const Comments = () => {
+
+
+export const Comments = ({setIsHidden}) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { review_id } = useParams();
@@ -14,11 +18,17 @@ export const Comments = () => {
       setComments(commentsFromApi);
       setIsLoading(false);
     });
-  }, [review_id]);
+  }, [review_id, comments]);
+
+
 
   return (
-    <section>
+    <section className="comment-modal">
+      <div className="comment-modal-content">
+
       <p>Comments</p>
+      <CloseButton setIsHidden={setIsHidden}/>
+      <AddComment setComments= {setComments}/>
       {isLoading ? (<Loading />) : (
         <ul className="comment-list">
           {comments.map((comment) => {
@@ -26,6 +36,7 @@ export const Comments = () => {
           })}
         </ul>
       )}
+      </div>
     </section>
   );
 };
