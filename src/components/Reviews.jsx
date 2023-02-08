@@ -10,13 +10,18 @@ export const Reviews = () => {
   const [title, setTitle] = useState('')
   const [isLoading, setIsLoading]= useState(true)
   const {category} = useParams()
+  const [err, setErr] = useState(null)
 
   useEffect(() => {
     getReviews(category).then((reviewsFromApi) => {
         setReviews(reviewsFromApi);
         setIsLoading(false)
         category ? setTitle(category) : setTitle('all games')
-      });
+      })
+      .catch((err)=>{
+        console.log(err)
+        setErr("Category not found")
+      })
     }
   , [category]);
 
@@ -25,7 +30,7 @@ export const Reviews = () => {
       <div className="banner">
         <h2>{formatCategoryName(title)}</h2>
       </div>
-        {isLoading ? <Loading/>:
+        {isLoading ? err ? <p>{err}</p>: <Loading/>:
       <ul>
         {reviews.map((review) => {
           return (
