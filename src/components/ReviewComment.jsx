@@ -1,6 +1,11 @@
 import comment from "../svg/comment.svg";
 
-export const ReviewComment = ({handleCommentClick, comment_count}) => {
+
+export const ReviewComment = ({comment_count, setIsHidden}) => {
+  const handleCommentClick = () => {
+    setIsHidden(false);
+  };
+
   return (
     <span>
       {comment_count}
