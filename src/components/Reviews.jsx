@@ -4,6 +4,7 @@ import { ReviewCard } from "./ReviewCard";
 import { Loading } from "./Loading";
 import {useParams} from 'react-router-dom'
 import { formatCategoryName } from "../utils/utils";
+import { Error } from "./Error";
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -19,7 +20,6 @@ export const Reviews = () => {
         category ? setTitle(category) : setTitle('all games')
       })
       .catch((err)=>{
-        console.log(err)
         setErr("Category not found")
       })
     }
@@ -30,7 +30,7 @@ export const Reviews = () => {
       <div className="banner">
         <h2>{formatCategoryName(title)}</h2>
       </div>
-        {isLoading ? err ? <p>{err}</p>: <Loading/>:
+        {isLoading ? err ? <Error err={err}/> : <Loading/>:
       <ul>
         {reviews.map((review) => {
           return (

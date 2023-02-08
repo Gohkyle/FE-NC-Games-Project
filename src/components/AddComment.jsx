@@ -46,10 +46,9 @@ export const AddComment = ({ setComments }) => {
   };
 
   return (
-    <div className="add-comment-container">
-        {isPosting? <Loading/> : null}
+      <div className="add-comment-container">
+        {err? <Error err={err}/> : isPosting? <Loading/> :null}
       <form className="add-comment" onSubmit={handleSubmit}>
-        {err ? <Error /> : null}
         <textarea
           placeholder="Share your thoughts here"
           value={commentToAdd}
