@@ -34,24 +34,24 @@ export const SingleReview = () => {
       setReview(reviewFromApi);
       setIsLoading(false);
     });
-  }, [review_id, votes, isHidden]);
+  }, [review_id]);
 
   return isLoading ? (
     <Loading />
   ) : (
     <main className="single-review-container">
-      {err ? <Error err={err}/> : null}
       <h4 className="single-review-header">{title}</h4>
       <img
         src={review_img_url}
         alt={`BoardGame: ${title}`}
         className="single-review-img"
-      />
+        />
       <div className="single-review-details">
         <UserIcon owner={owner} />
         <p>{designer}</p>
         <p>{formatDate(created_at)}</p>
         <p>{review_body}</p>
+        {err ? <Error err={err}/> : null}
         <span>
           <ReviewVoting review_id= {review_id} setErr= {setErr} votes={votes}/> 
           <ReviewComment setIsHidden = {setIsHidden} comment_count = {comment_count}/>

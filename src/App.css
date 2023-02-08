@@ -126,24 +126,26 @@ box-sizing: border-box;
   text-align:left;
 }
 
-
-
-/* .loading-logo {
-  height: 40vmin;
-  pointer-events: none;
+.comment-textarea{
+  background-color: #ededed;
+  /* color:; */
+  padding:1em 15% 1em 1em;
+  border-radius:10px;
+  border:transparent;
+  outline:none;
+  width:100%;
+  box-sizing: border-box;
+  resize:none;
+  z-index:-1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .loading-logo {
-    animation: loading-logo-spin infinite 10s linear;
-  }
+.add-comment-container{
+  position:relative;
 }
 
-@keyframes loading-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.add-comment-button{
+  position:absolute;
+  right:5%;
+  top:30%;
+  ;
+}
