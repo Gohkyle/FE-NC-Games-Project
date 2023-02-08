@@ -3,23 +3,28 @@ import { useState, useEffect } from "react";
 import { ReviewCard } from "./ReviewCard";
 import { Loading } from "./Loading";
 import {useParams} from 'react-router-dom'
+import { formatCategoryName } from "../utils/utils";
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [title, setTitle] = useState('')
   const [isLoading, setIsLoading]= useState(true)
-const{category} = useParams()
+  const {category} = useParams()
 
   useEffect(() => {
-    getReviews().then((reviewsFromApi) => {
+    getReviews(category).then((reviewsFromApi) => {
         setReviews(reviewsFromApi);
         setIsLoading(false)
+        category ? setTitle(category) : setTitle('all games')
       });
     }
-  , []);
+  , [category]);
 
   return (
     <main>
-        <h2>TITLE</h2>
+      <div className="banner">
+        <h2>{formatCategoryName(title)}</h2>
+      </div>
         {isLoading ? <Loading/>:
       <ul>
         {reviews.map((review) => {
