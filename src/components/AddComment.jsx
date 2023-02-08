@@ -6,7 +6,7 @@ import { Error } from "./Error";
 import sendComment from "../svg/send-comment.svg";
 import {Loading} from './Loading'
 
-export const AddComment = ({ setComments }) => {
+export const AddComment = ({ setComments ,setLocalCommentCount}) => {
   const [commentToAdd, setCommentToAdd] = useState();
   const [err, setErr] = useState(null);
   const [isPosting, setIsPosting] = useState(false);
@@ -36,6 +36,7 @@ export const AddComment = ({ setComments }) => {
             },
           ];
         });
+        setLocalCommentCount((currentCommentCount)=>{return (currentCommentCount + 1)})
       })
       .catch((err) => {
         setComments((currentComments) => {

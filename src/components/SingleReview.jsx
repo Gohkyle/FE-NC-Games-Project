@@ -6,13 +6,14 @@ import { UserIcon } from "./UserIcon";
 import { Loading } from "./Loading";
 import { Comments } from "./Comments";
 import { Error } from "./Error";
-import {ReviewVoting} from "./ReviewVoting"
-import {ReviewComment} from './ReviewComment'
+import { ReviewVoting } from "./ReviewVoting";
+import { ReviewComment } from "./ReviewComment";
 
 export const SingleReview = () => {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
+  const [localCommentCount, setLocalCommentCount] =useState(0)
 
   const [err, setErr] = useState(null);
 
@@ -32,9 +33,10 @@ export const SingleReview = () => {
   useEffect(() => {
     getReview(review_id).then((reviewFromApi) => {
       setReview(reviewFromApi);
+      setLocalCommentCount(comment_count)
       setIsLoading(false);
     });
-  }, [review_id]);
+  }, [review_id, comment_count]);
 
   return isLoading ? (
     <Loading />
@@ -45,19 +47,21 @@ export const SingleReview = () => {
         src={review_img_url}
         alt={`BoardGame: ${title}`}
         className="single-review-img"
-        />
+      />
       <div className="single-review-details">
         <UserIcon owner={owner} />
         <p>{designer}</p>
         <p>{formatDate(created_at)}</p>
         <p>{review_body}</p>
-        {err ? <Error err={err}/> : null}
+        {err ? <Error err={err} /> : null}
         <span>
-          <ReviewVoting review_id= {review_id} setErr= {setErr} votes={votes}/> 
-          <ReviewComment setIsHidden = {setIsHidden} comment_count = {comment_count}/>
-
+          <ReviewVoting review_id={review_id} setErr={setErr} votes={votes} />
+          <ReviewComment
+            setIsHidden={setIsHidden}
+            comment_count={localCommentCount}
+          />
         </span>
-        {isHidden ? null : <Comments setIsHidden={setIsHidden} />}
+        {isHidden ? null : <Comments setIsHidden={setIsHidden} setLocalCommentCount = {setLocalCommentCount}/>}
       </div>
     </main>
   );
