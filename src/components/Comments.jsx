@@ -9,7 +9,6 @@ import close from '../svg/close.svg'
 export const Comments = ({setIsHidden}) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
   const { review_id } = useParams();
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export const Comments = ({setIsHidden}) => {
       setComments(commentsFromApi);
       setIsLoading(false);
     });
-  }, [review_id]);
+  }, [review_id, comments]);
 
   const handleCloseClick = () => {
     setIsHidden(true);
@@ -30,7 +29,7 @@ export const Comments = ({setIsHidden}) => {
       <p>Comments</p>
       <input type='image' onClick={handleCloseClick}src={close} alt="close modal" className="close-button"/>
 
-      <AddComment/>
+      <AddComment setComments= {setComments}/>
       {isLoading ? (<Loading />) : (
         <ul className="comment-list">
           {comments.map((comment) => {
