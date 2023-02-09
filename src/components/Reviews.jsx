@@ -25,8 +25,8 @@ export const Reviews = () => {
         setIsLoading(false)
         category ? setTitle(category) : setTitle('all games')
       })
-      .catch((err)=>{
-        setErr("Category not found")
+      .catch(({response:{data:{msg}}})=>{
+        setErr(msg)
       })
     }
   , [category, sortByQuery, orderQuery]);
