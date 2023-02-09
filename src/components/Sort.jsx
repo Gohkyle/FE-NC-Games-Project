@@ -13,13 +13,12 @@ export const Sort = ({setSearchParams}) => {
 
     return (
     <div className="sort">
-        {/* <Link to="" relative="path">Title</Link><button>Title</button>
-        <Link>Designer</Link><button>Designer</button>
-        <Link>Owner</Link><button>Owner</button>
-        <Link>Category</Link><button>Category</button>
-        <Link>Votes</Link><button>Votes</button>
-        <Link>Date</Link><button>Date</button> */}
-
+        <Link to={`?sort_by=title`}>Title</Link>
+        <Link to={`?sort_by=designer`}>Designer</Link>
+        <Link to={`?sort_by=owner`}>Owner</Link>
+        <Link to={`?sort_by=category`}>Category</Link>
+        <Link to={`?sort_by=votes`}>Votes</Link>
+        <Link to={`?sort_by=created_at`}>Date</Link>
 <input type="image" src={ascending} alt="ascending" onClick={()=> setSortOrder('asc')}/>
 <input type="image" src={descending} alt="descending" onClick={()=> setSortOrder('desc')}/>
     </div>

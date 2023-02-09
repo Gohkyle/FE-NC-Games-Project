@@ -18,6 +18,7 @@ export const Reviews = () => {
   let [searchParams, setSearchParams] = useSearchParams()
   const sortByQuery = searchParams.get("sort_by")
   const orderQuery = searchParams.get('order');
+  console.log(orderQuery)
  
   useEffect(() => {
     getReviews(category, sortByQuery, orderQuery).then((reviewsFromApi) => {
