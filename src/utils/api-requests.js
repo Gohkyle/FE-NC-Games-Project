@@ -15,17 +15,17 @@ export const getReviews = (category, sortby, order) => {
       .then(({ data: { reviews } }) => {
         return reviews;
       });
-  } else
-    return ncGamesApi
-      .get("/reviews", {
-        params: {
-          sort_by: sortby,
-          order: "asc",
-        },
-      })
-      .then(({ data: { reviews } }) => {
-        return reviews;
-      });
+  } else console.log(order);
+  return ncGamesApi
+    .get("/reviews", {
+      params: {
+        sort_by: sortby,
+        order_by: order,
+      },
+    })
+    .then(({ data: { reviews } }) => {
+      return reviews;
+    });
 };
 
 export const getReview = (review_id) => {
