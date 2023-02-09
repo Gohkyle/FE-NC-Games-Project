@@ -65,6 +65,7 @@ export const AddComment = ({ setComments ,setLocalCommentCount}) => {
           className="add-comment-button"
           type="image"
           src={sendComment}
+          disabled= {isPosting}
         />
       </form>
     </div>

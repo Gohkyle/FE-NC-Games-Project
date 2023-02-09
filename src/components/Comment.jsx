@@ -10,11 +10,11 @@ import {Loading} from './Loading'
 export const Comment = ({ comment, setLocalCommentCount }) => {
   const { comment_id, body, votes, created_at, author } = comment;
   const {user} = useContext(UserContext)
-  const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   return (
     <li className="comment-card">
-      {user===author ? <DeleteComment setLocalCommentCount = {setLocalCommentCount} setIsLoading = {setIsLoading} comment_id={comment_id}/> : null}
+      {user===author ? <DeleteComment isDeleting= {isDeleting} setLocalCommentCount = {setLocalCommentCount} setIsDeleting = {setIsDeleting} comment_id={comment_id}/> : null}
       <div className="comment-avatar-container">
         <img
           src={avatar}
@@ -25,8 +25,8 @@ export const Comment = ({ comment, setLocalCommentCount }) => {
       <div className="comment-card-details">
         <h5>{author}</h5>
         <p>{body}</p>
+      {isDeleting? <Loading/> :null}
       </div>
-      {isLoading? <Loading/>:null}
       <p className="comment-card-footer">
         {formatDateTime(created_at)} {votes} <img alt="votes" src={upVote} />
       </p>
