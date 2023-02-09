@@ -8,7 +8,6 @@ const [categories, setCategories] = useState([])
 
     useEffect(()=>{
         getCategories().then((categoriesFromApi)=>{
-            console.log(categoriesFromApi)
             setCategories(categoriesFromApi)
         })
     }, [])
@@ -21,8 +20,8 @@ const [categories, setCategories] = useState([])
                 <h2>ALL GAMES</h2>
                 </Link>
             </li>
-        {categories.map((category)=>{
-            return <Category category={category}/>
+            {categories.map((category)=>{
+                return <Category category={category}/>
         })}
         </ul>
     </section>
