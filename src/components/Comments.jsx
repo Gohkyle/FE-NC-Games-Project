@@ -32,7 +32,7 @@ export const Comments = ({setIsHidden, setLocalCommentCount}) => {
       {isLoading ? (<Loading />) : (
         <ul className="comment-list">
           {comments.map((comment) => {
-            return <Comment key={comment.comment_id} comment={comment} />;
+            return <Comment key={comment.comment_id} comment={comment} setLocalCommentCount={setLocalCommentCount}/>;
           })}
         </ul>
       )}
