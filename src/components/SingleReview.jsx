@@ -16,7 +16,7 @@ export const SingleReview = () => {
   const [localCommentCount, setLocalCommentCount] =useState(0)
 
   const [err, setErr] = useState(null);
-
+  const [pageErr, setPageErr] = useState(null)
   const { review_id } = useParams();
 
   const {
@@ -31,12 +31,20 @@ export const SingleReview = () => {
   } = review;
 
   useEffect(() => {
-    getReview(review_id).then((reviewFromApi) => {
+    getReview(review_id)
+    .then((reviewFromApi) => {
       setReview(reviewFromApi);
       setLocalCommentCount(comment_count)
       setIsLoading(false);
-    });
+    })
+    .catch(({response:{data:{msg}}})=>{
+      setPageErr(msg);
+    })
   }, [review_id, comment_count]);
+
+if (pageErr) {
+  return <h2>{pageErr}</h2>
+}
 
   return isLoading ? (
     <Loading />
