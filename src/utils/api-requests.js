@@ -8,16 +8,19 @@ export const getReviews = (category, sortby, order) => {
   if (category) {
     return ncGamesApi
       .get(`/reviews`, {
-        category: category,
-        sortby: sortby,
+        params: {
+          category: category,
+        },
       })
       .then(({ data: { reviews } }) => {
         return reviews;
       });
   } else
-    return ncGamesApi.get("/reviews").then(({ data: { reviews } }) => {
-      return reviews;
-    });
+    return ncGamesApi
+      .get("/reviews", { sort_by: "title" })
+      .then(({ data: { reviews } }) => {
+        return reviews;
+      });
 };
 
 export const getReview = (review_id) => {
