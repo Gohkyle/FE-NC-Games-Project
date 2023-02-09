@@ -4,6 +4,7 @@ import { ReviewPage } from "./components/ReviewPage";
 import { HomePage } from "./components/HomePage";
 import { Routes, Route } from "react-router-dom";
 import { ErrorPage } from "./components/ErrorPage";
+import { Loading } from "./components/Loading";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/reviews" element={<ReviewsPage />}></Route>
         <Route path="/reviews/:review_id" element={<ReviewPage />}></Route>
         <Route path="/category/:category" element={<ReviewsPage />}></Route>
+        <Route path="/login" element={<Loading />}></Route>
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
     </div>
