@@ -6,7 +6,7 @@ import { Error } from "./Error";
 import sendComment from "../svg/send-comment.svg";
 import {Loading} from './Loading'
 
-export const AddComment = ({ setComments ,setLocalCommentCount}) => {
+export const AddComment = ({ setComments ,setLocalCommentCount, isDeleted}) => {
   const [commentToAdd, setCommentToAdd] = useState();
   const [err, setErr] = useState(null);
   const [isPosting, setIsPosting] = useState(false);
@@ -16,6 +16,7 @@ export const AddComment = ({ setComments ,setLocalCommentCount}) => {
   const handleChange = (event) => {
     setCommentToAdd(event.target.value);
   };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsPosting(true);
@@ -65,8 +66,10 @@ export const AddComment = ({ setComments ,setLocalCommentCount}) => {
           className="add-comment-button"
           type="image"
           src={sendComment}
+          disabled= {isPosting}
         />
       </form>
+      {isDeleted ? <p>comment successfully deleted</p> :null}
     </div>
   );
 };

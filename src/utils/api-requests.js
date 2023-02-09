@@ -59,3 +59,7 @@ export const getCategories = () => {
     return categories;
   });
 };
+
+export const deleteComment = (comment_id) => {
+  return ncGamesApi.delete(`/comments/${comment_id}`);
+};
