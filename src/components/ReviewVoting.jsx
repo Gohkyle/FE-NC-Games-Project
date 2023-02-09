@@ -4,28 +4,17 @@ import { patchReview } from "../utils/api-requests";
 import { useState } from "react";
 
 
-export const ReviewVoting = ({review_id, votes, setErr}) => {
-const [localVotes, setLocalVotes] = useState(votes)
-const [upBeenPressed, setUpBeenPressed] = useState(false)
-const [downBeenPressed, setDownBeenPressed] = useState(false)
-
-const lockUpVote = () => {
-  setUpBeenPressed(true); 
-    setDownBeenPressed(false)
-}
-const lockDownVote = () => {
-  setDownBeenPressed(true);
-  setUpBeenPressed(false); 
-}
+export const ReviewVoting = ({review_id, votes, err, setErr}) => {
+const [voteChange, setVoteChange] = useState(0)
 
   const handleVoteClick = (event) => {
     event.preventDefault();
     setErr(null);
-    setLocalVotes(localVotes + Number(event.target.value));
-    (event.target.value > 0) ? lockUpVote() : lockDownVote();
+    setVoteChange((currentVoteChange)=>{
+      return currentVoteChange + Number(event.target.value)})
     patchReview(review_id, event.target.value)
       .catch((err) => {
-        setLocalVotes(localVotes - Number(event.target.value));
+        setVoteChange(0)
         setErr("Something went wrong, please try again.");
       });
   };
@@ -38,16 +27,16 @@ return (
       type="image"
       value="1"
       src={upVote}
-      disabled={upBeenPressed}
-      />
-      {localVotes}
+      disabled= {voteChange>0 || err}
+    />
+{votes + voteChange}
     <input
       alt="down-votes"
       onClick={handleVoteClick}
       type="image"
       value="-1"
       src={downVote}
-disabled={downBeenPressed}
+      disabled={voteChange<0 || err}
     />
   </span>)
 }

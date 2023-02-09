@@ -55,7 +55,7 @@ export const SingleReview = () => {
         <p>{review_body}</p>
         {err ? <Error err={err} /> : null}
         <span>
-          <ReviewVoting review_id={review_id} setErr={setErr} votes={votes} />
+          <ReviewVoting err= {err} review_id={review_id} setErr={setErr} votes={votes} />
           <ReviewComment
             setIsHidden={setIsHidden}
             comment_count={localCommentCount}
