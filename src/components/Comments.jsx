@@ -8,7 +8,7 @@ import { CloseButton } from './CloseButton'
 
 
 
-export const Comments = ({setIsHidden}) => {
+export const Comments = ({setIsHidden, setLocalCommentCount}) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { review_id } = useParams();
@@ -24,11 +24,11 @@ export const Comments = ({setIsHidden}) => {
 
   return (
     <section className="comment-modal">
+      <CloseButton setIsHidden={setIsHidden}/>
       <div className="comment-modal-content">
 
       <p>Comments</p>
-      <CloseButton setIsHidden={setIsHidden}/>
-      <AddComment setComments= {setComments}/>
+      <AddComment setComments= {setComments} setLocalCommentCount= {setLocalCommentCount}/>
       {isLoading ? (<Loading />) : (
         <ul className="comment-list">
           {comments.map((comment) => {

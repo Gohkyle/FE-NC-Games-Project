@@ -6,7 +6,7 @@ import { Error } from "./Error";
 import sendComment from "../svg/send-comment.svg";
 import {Loading} from './Loading'
 
-export const AddComment = ({ setComments }) => {
+export const AddComment = ({ setComments ,setLocalCommentCount}) => {
   const [commentToAdd, setCommentToAdd] = useState();
   const [err, setErr] = useState(null);
   const [isPosting, setIsPosting] = useState(false);
@@ -36,6 +36,7 @@ export const AddComment = ({ setComments }) => {
             },
           ];
         });
+        setLocalCommentCount((currentCommentCount)=>{return (currentCommentCount + 1)})
       })
       .catch((err) => {
         setComments((currentComments) => {
@@ -46,10 +47,9 @@ export const AddComment = ({ setComments }) => {
   };
 
   return (
-    <div className="add-comment-container">
-        {isPosting? <Loading/> : null}
+      <div className="add-comment-container">
+        {err? <Error err={err}/> : isPosting? <Loading/> :null}
       <form className="add-comment" onSubmit={handleSubmit}>
-        {err ? <Error /> : null}
         <textarea
           placeholder="Share your thoughts here"
           value={commentToAdd}

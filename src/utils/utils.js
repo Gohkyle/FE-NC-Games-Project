@@ -14,3 +14,7 @@ export const formatDateTime = (dateFromApi) => {
   const dateFormat = new Date(dateFromApi);
   return dateFormat.toLocaleString("en-GB", options);
 };
+
+export const formatCategoryName = (category) => {
+  return category.replaceAll("-", " ").toUpperCase();
+};

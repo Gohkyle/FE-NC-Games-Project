@@ -9,11 +9,20 @@ const [localVotes, setLocalVotes] = useState(votes)
 const [upBeenPressed, setUpBeenPressed] = useState(false)
 const [downBeenPressed, setDownBeenPressed] = useState(false)
 
+const lockUpVote = () => {
+  setUpBeenPressed(true); 
+    setDownBeenPressed(false)
+}
+const lockDownVote = () => {
+  setDownBeenPressed(true);
+  setUpBeenPressed(false); 
+}
+
   const handleVoteClick = (event) => {
     event.preventDefault();
     setErr(null);
     setLocalVotes(localVotes + Number(event.target.value));
-    (event.target.value > 0) ? setUpBeenPressed(true) : setDownBeenPressed(true);
+    (event.target.value > 0) ? lockUpVote() : lockDownVote();
     patchReview(review_id, event.target.value)
       .catch((err) => {
         setLocalVotes(localVotes - Number(event.target.value));
