@@ -36,7 +36,7 @@ export const Reviews = () => {
       <div className="banner">
         <h2>{formatCategoryName(title)}</h2>
       </div>
-      <Sort setSearchParams={setSearchParams}/>
+      <Sort category= {category} setSearchParams={setSearchParams}/>
         {isLoading ? err ? <Error err={err}/> : <Loading/>:
       <ul className="reviews-flex-container">
         {reviews.map((review) => {

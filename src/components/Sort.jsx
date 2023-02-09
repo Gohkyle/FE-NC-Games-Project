@@ -2,7 +2,7 @@ import ascending from '../svg/ascending.svg'
 import descending from '../svg/descending.svg'
 import { Link } from 'react-router-dom'
 
-export const Sort = ({setSearchParams}) => {
+export const Sort = ({setSearchParams,category}) => {
     const setSortOrder = (direction) => {
         setSearchParams((currSearchParams)=>{
             const newParams = new URLSearchParams(currSearchParams)
@@ -16,7 +16,7 @@ export const Sort = ({setSearchParams}) => {
         <Link to={`?sort_by=title`}>Title</Link>
         <Link to={`?sort_by=designer`}>Designer</Link>
         <Link to={`?sort_by=owner`}>Owner</Link>
-        <Link to={`?sort_by=category`}>Category</Link>
+        {!category?<Link to={`?sort_by=category`}>Category</Link>:null}
         <Link to={`?sort_by=votes`}>Votes</Link>
         <Link to={`?sort_by=created_at`}>Date</Link>
 <input type="image" src={ascending} alt="ascending" onClick={()=> setSortOrder('asc')}/>
