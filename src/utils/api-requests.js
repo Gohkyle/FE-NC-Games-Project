@@ -4,17 +4,30 @@ const ncGamesApi = axios.create({
   baseURL: "https://kyles-super-amazing-game-review-api.onrender.com/api",
 });
 
-export const getReviews = (category) => {
+export const getReviews = (category, sortBy, orderBy) => {
   if (category) {
     return ncGamesApi
-      .get(`/reviews?category=${category}`)
+      .get(`/reviews`, {
+        params: {
+          category: category,
+          sort_by: sortBy,
+          order_by: orderBy,
+        },
+      })
       .then(({ data: { reviews } }) => {
         return reviews;
       });
   } else
-    return ncGamesApi.get("/reviews").then(({ data: { reviews } }) => {
-      return reviews;
-    });
+    return ncGamesApi
+      .get("/reviews", {
+        params: {
+          sort_by: sortBy,
+          order_by: orderBy,
+        },
+      })
+      .then(({ data: { reviews } }) => {
+        return reviews;
+      });
 };
 
 export const getReview = (review_id) => {
