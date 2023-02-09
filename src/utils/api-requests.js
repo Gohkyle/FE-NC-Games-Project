@@ -17,7 +17,7 @@ export const getReviews = (category, sortby, order) => {
       });
   } else
     return ncGamesApi
-      .get("/reviews", { sort_by: "title" })
+      .get("/reviews", { params: { sort_by: "designer" } })
       .then(({ data: { reviews } }) => {
         return reviews;
       });
