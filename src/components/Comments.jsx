@@ -12,6 +12,7 @@ export const Comments = ({setIsHidden, setLocalCommentCount}) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { review_id } = useParams();
+  const  [isDeleted, setIsDeleted] = useState(false)
 
   useEffect(() => {
     getCommentsByReview(review_id).then((commentsFromApi) => {
@@ -28,11 +29,11 @@ export const Comments = ({setIsHidden, setLocalCommentCount}) => {
       <div className="comment-modal-content">
 
       <p>Comments</p>
-      <AddComment setComments= {setComments} setLocalCommentCount= {setLocalCommentCount}/>
+      <AddComment isDeleted= {isDeleted} setComments= {setComments} setLocalCommentCount= {setLocalCommentCount}/>
       {isLoading ? (<Loading />) : (
         <ul className="comment-list">
           {comments.map((comment) => {
-            return <Comment key={comment.comment_id} comment={comment} setLocalCommentCount={setLocalCommentCount}/>;
+            return <Comment setIsDeleted= {setIsDeleted} key={comment.comment_id} comment={comment} setLocalCommentCount={setLocalCommentCount}/>;
           })}
         </ul>
       )}

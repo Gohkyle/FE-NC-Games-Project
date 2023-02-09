@@ -8,15 +8,14 @@ import { DeleteComment } from "./DeleteComment";
 import {Loading} from './Loading'
 import { Error } from "./Error";
 
-export const Comment = ({ comment, setLocalCommentCount }) => {
+export const Comment = ({ comment, setLocalCommentCount, setIsDeleted}) => {
   const { comment_id, body, votes, created_at, author } = comment;
   const {user} = useContext(UserContext)
   const [isDeleting, setIsDeleting] = useState(false);
   const [err, setErr] =useState(null);
-  const  [isDeleted, setIsDeleted] = useState(false)
+  
 
   return (
-    isDeleted ? <li className = "comment-card">comment successfully deleted</li> :
     <li className="comment-card">
       {user === author ? <DeleteComment setIsDeleted ={setIsDeleted}setErr={setErr} isDeleting= {isDeleting} setLocalCommentCount = {setLocalCommentCount} setIsDeleting = {setIsDeleting} comment_id={comment_id}/> : null}
       <div className="comment-avatar-container">
