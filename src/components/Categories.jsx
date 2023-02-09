@@ -21,7 +21,7 @@ const [categories, setCategories] = useState([])
                 </Link>
             </li>
             {categories.map((category)=>{
-                return <Category category={category}/>
+                return <Category key={category.slug} category={category}/>
         })}
         </ul>
     </section>

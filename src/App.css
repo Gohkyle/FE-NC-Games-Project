@@ -15,8 +15,8 @@ ul {
 
 .review-card {
   display: grid;
-  grid-template-columns: [img] 25vw[details] auto;
-  grid-template-rows: 1fr;
+  grid-template-columns: [img] 25vw [details] auto;
+  grid-template-rows: auto;
   grid-template-areas: "img details";
   width: 90vw;
   column-gap: 5%;
@@ -39,12 +39,13 @@ ul {
 }
 
 .review-card-details {
+  font-weight: 100;
   grid-area: details;
   grid-column: 2/3;
   grid-row: 1/2;
   text-align: left;
-  font-size: 1em;
-  line-height: normal;
+  display:flex;
+  flex-direction: column;
 }
 
 .single-review-container {
