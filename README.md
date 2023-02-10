@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# KYLE'S SUPER AMAZING GAME REVIEW
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## INTRODUCTION
 
-## Available Scripts
+[Kyle's Super Amazing Game Review](https://marvelous-sunburst-a598b2.netlify.app/) was built for the purpose of accessing application data programmatically. The intention here is to mimic the building of a real world frontend service (such as reddit), which should use data from a back end architecture, ([Kyle's Super Amazing Game Review](https://kyles-super-amazing-game-review-api.onrender.com/api).
 
-In the project directory, you can run:
+## GITHUB REPOSITORY LINKS
 
-### `npm start`
+[BackEnd Repo](https://github.com/Gohkyle/BE-NC-games-project)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[FrontEnd Repo](https://github.com/Gohkyle/FE-NC-Games-Project)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## HOW TO RUN THE APP LOCALLY
 
-### `npm test`
+### MAKE A CLONE
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To make a local clone of the app, run
 
-### `npm run build`
+`git clone https://github.com/Gohkyle/FE-NC-Games-Project.git`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### DEPENDENCIES
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project uses a few packages that will need to be installed in ordered to run locally. Please see below for a summary.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Package                                                            | description         |
+| ------------------------------------------------------------------ | ------------------- |
+| [axios](https://axios-http.com/docs/intro)                         | http client,        |
+| [react-router-dom](https://reactrouter.com/en/main/start/overview) | client side routing |
 
-### `npm run eject`
+To install, run `npm install`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### HOSTING THE APP LOCALLY
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To host a local version of the app, run
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`npm start`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## MINIMUM REQUIREMENTS
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Node: v19.1.0
