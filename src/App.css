@@ -165,7 +165,7 @@ ul {
 .add-comment-button {
   position: absolute;
   right: 5%;
-  top: 30%;
+  bottom: 3em;
 }
 
 nav {
