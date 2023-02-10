@@ -39,13 +39,10 @@ ul {
 }
 
 .review-card-details {
-  font-weight: 100;
   grid-area: details;
   grid-column: 2/3;
   grid-row: 1/2;
   text-align: left;
-  display:flex;
-  flex-direction: column;
 }
 
 .single-review-container {
@@ -72,11 +69,11 @@ ul {
   padding-right: 5vw;
 }
 
-.comment-list {
+.comments-list {
   box-sizing: border-box;
 }
 
-.comment-modal {
+.comments-modal {
   position: fixed;
   z-index: 2;
   top: 0;
@@ -88,7 +85,7 @@ ul {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.comment-modal-content {
+.comments-modal-content {
   background-color: #fefefe;
   margin: auto; /* 15% from the top and centered */
   padding: 20px;
@@ -99,8 +96,10 @@ ul {
 .close-button{
   position:fixed;
   right:10%;
-  top:20px
+  top:20px;
+  z-index:1;
 }
+
 .comment-card {
   display: grid;
   position:relative;
@@ -168,6 +167,7 @@ ul {
 
 .add-comment-container {
   position: relative;
+  
 }
 
 .add-comment-button {
@@ -228,6 +228,14 @@ header{
   20% {transform: translateY(-0.5em)}
   25% {transform:translateY(0em)}
 }
+
+
+.toggle-hide::after{
+  transform: rotate(0.5turn)
+}
+
+
+
 
 
 a{

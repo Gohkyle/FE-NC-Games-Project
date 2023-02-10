@@ -6,7 +6,7 @@ import { Error } from "./Error";
 import sendComment from "../svg/send-comment.svg";
 import {Loading} from './Loading'
 
-export const AddComment = ({ setComments ,setLocalCommentCount, isDeleted}) => {
+export const AddComment = ({ setComments ,setLocalCommentCount}) => {
   const [commentToAdd, setCommentToAdd] = useState();
   const [err, setErr] = useState(null);
   const [isPosting, setIsPosting] = useState(false);
@@ -70,7 +70,6 @@ export const AddComment = ({ setComments ,setLocalCommentCount, isDeleted}) => {
           disabled= {isPosting}
         />
       </form>
-      {isDeleted ? <p>comment successfully deleted</p> :null}
     </div>
   );
 };
