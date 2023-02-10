@@ -14,6 +14,8 @@ export const Reviews = () => {
   const [isLoading, setIsLoading]= useState(true)
   const {category} = useParams()
   const [err, setErr] = useState(null)
+  const [isHidden, setIsHidden] = useState(true)
+
 
   let [searchParams, setSearchParams] = useSearchParams()
   const sortByQuery = searchParams.get("sort_by")

@@ -14,9 +14,6 @@ export const Sort = ({setSearchParams,category}) => {
     return (
     <div className="sort">
         <Link to={`?sort_by=title`}>Title</Link>
-        <Link to={`?sort_by=designer`}>Designer</Link>
-        <Link to={`?sort_by=owner`}>Owner</Link>
-        {!category?<Link to={`?sort_by=category`}>Category</Link>:null}
         <Link to={`?sort_by=votes`}>Votes</Link>
         <Link to={`?sort_by=created_at`}>Date</Link>
         <Link to={`?sort_by=comment_count`}>Comments</Link>

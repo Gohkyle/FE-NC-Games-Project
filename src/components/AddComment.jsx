@@ -60,7 +60,8 @@ export const AddComment = ({ setComments ,setLocalCommentCount, isDeleted}) => {
           rows="3"
           className="comment-textarea"
           name="add a comment"
-        ></textarea>
+        >
+        </textarea>
         <input
           alt="submit"
           className="add-comment-button"
