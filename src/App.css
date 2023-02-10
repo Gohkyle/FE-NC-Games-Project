@@ -172,6 +172,8 @@ nav {
   display: flex;
   flex-direction: row;
   width: 100vw;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .Nav-item{
@@ -198,6 +200,7 @@ nav {
 header{
   position:sticky;
   top:0;
+  background-color:#fefefe
 }
 
 .loading-logo {
@@ -219,3 +222,25 @@ header{
   20% {transform: translateY(-0.5em)}
   25% {transform:translateY(0em)}
 }
+
+
+a{
+  text-decoration:none;
+}
+
+a:visited{
+  color:black
+}
+
+a:link{
+  color:black;
+
+}
+
+a:hover{
+  color:black;
+  text-decoration:underline;
+  text-decoration-thickness: 0.15em;
+}
+
+a:active{}

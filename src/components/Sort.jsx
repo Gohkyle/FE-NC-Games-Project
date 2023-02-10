@@ -19,6 +19,7 @@ export const Sort = ({setSearchParams,category}) => {
         {!category?<Link to={`?sort_by=category`}>Category</Link>:null}
         <Link to={`?sort_by=votes`}>Votes</Link>
         <Link to={`?sort_by=created_at`}>Date</Link>
+        <Link to={`?sort_by=comment_count`}>Comments</Link>
 <input type="image" src={ascending} alt="ascending" onClick={()=> setSortOrder('asc')}/>
 <input type="image" src={descending} alt="descending" onClick={()=> setSortOrder('desc')}/>
     </div>
