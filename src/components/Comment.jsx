@@ -1,6 +1,6 @@
 import { formatDateTime } from "../utils/utils";
 import upVote from "../svg/up-vote.svg";
-import avatar from "../svg/avatar.svg";
+import { UserIcon } from "./UserIcon";
 
 import { useContext, useState} from "react";
 import {UserContext} from '../contexts/User'
@@ -10,20 +10,16 @@ import { Error } from "./Error";
 
 export const Comment = ({ comment, setLocalCommentCount, setIsDeleted}) => {
   const { comment_id, body, votes, created_at, author } = comment;
-  const {user} = useContext(UserContext)
+  const {loggedInUser: {username}} = useContext(UserContext)
   const [isDeleting, setIsDeleting] = useState(false);
   const [err, setErr] =useState(null);
   
 
   return (
     <li className="comment-card">
-      {user === author ? <DeleteComment setIsDeleted ={setIsDeleted}setErr={setErr} isDeleting= {isDeleting} setLocalCommentCount = {setLocalCommentCount} setIsDeleting = {setIsDeleting} comment_id={comment_id}/> : null}
+      {username === author ? <DeleteComment setIsDeleted ={setIsDeleted}setErr={setErr} isDeleting= {isDeleting} setLocalCommentCount = {setLocalCommentCount} setIsDeleting = {setIsDeleting} comment_id={comment_id}/> : null}
       <div className="comment-avatar-container">
-        <img
-          src={avatar}
-          alt={`${author}'s avatar`}
-          className="comment-avatar"
-        />
+        <UserIcon user={author}/>
       </div>
       <div className="comment-card-details">
         <h5>{author}</h5>

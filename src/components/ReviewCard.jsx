@@ -18,7 +18,7 @@ export const ReviewCard = ({
       </Link>
           </div>
         <div className="review-card-details">
-          <h3>{title}</h3>
+        <Link to={`/reviews/${review_id}`}><h3>{title}</h3></Link>
           <p>{designer}</p>
           <p>{formatDate(created_at)}</p>
           <p>

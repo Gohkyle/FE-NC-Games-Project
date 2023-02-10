@@ -230,11 +230,6 @@ header{
 }
 
 
-.toggle-hide::after{
-  transform: rotate(0.5turn)
-}
-
-
 
 
 

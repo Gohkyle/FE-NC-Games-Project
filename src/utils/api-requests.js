@@ -76,3 +76,9 @@ export const getCategories = () => {
 export const deleteComment = (comment_id) => {
   return ncGamesApi.delete(`/comments/${comment_id}`);
 };
+
+export const getUser = (username) => {
+  return ncGamesApi.get(`/users/${username}`).then(({ data: { user } }) => {
+    return user;
+  });
+};

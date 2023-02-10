@@ -17,33 +17,33 @@ export const Sort = ({ setSearchParams, category }) => {
 
   const [isHidden, setIsHidden] = useState(true)
 
-  const handleClick = () =>{}
-
   return (
     <div className="sort-container">
+        <p>FILTERS</p>
         {isHidden ?
-      <input onClick = {handleClick} type="image" src={show} alt="show sort bys" className="toggle-hide" /> :
+      <input onClick = {()=>{setIsHidden(false)}} type="image" src={show} alt="show sort bys" className="toggle-hide" /> :
       <div>
-      <input type="image" src={hide} alt="hide sort bys" className="toggle-hide" />
       <div className="sort-options">
         <Link to={`?sort_by=title`}>Title</Link>
         <Link to={`?sort_by=votes`}>Votes</Link>
         <Link to={`?sort_by=created_at`}>Date</Link>
         <Link to={`?sort_by=comment_count`}>Comments</Link>
       </div>
-      </div>}
       <input
         type="image"
         src={ascending}
         alt="ascending"
         onClick={() => setSortOrder("asc")}
-      />
+        />
       <input
         type="image"
         src={descending}
         alt="descending"
         onClick={() => setSortOrder("desc")}
-      />
+        />
+
+      <input onClick = {()=>{setIsHidden(true)}}type="image" src={hide} alt="hide sort bys" className="toggle-hide" />
+        </div>}
     </div>
   );
 };

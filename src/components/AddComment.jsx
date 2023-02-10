@@ -11,7 +11,7 @@ export const AddComment = ({ setComments ,setLocalCommentCount}) => {
   const [err, setErr] = useState(null);
   const [isPosting, setIsPosting] = useState(false);
   const { review_id } = useParams();
-  const { user } = useContext(UserContext);
+  const { loggedInUser:{username} } = useContext(UserContext);
 
   const handleChange = (event) => {
     setCommentToAdd(event.target.value);
@@ -20,7 +20,7 @@ export const AddComment = ({ setComments ,setLocalCommentCount}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsPosting(true);
-    postComment(review_id, user, commentToAdd)
+    postComment(review_id, username, commentToAdd)
       .then(() => {
         setCommentToAdd("");
         setIsPosting(false);
@@ -31,7 +31,7 @@ export const AddComment = ({ setComments ,setLocalCommentCount}) => {
               comment_id: currentComments.length + 1,
               body: commentToAdd,
               votes: 0,
-              author: user,
+              author: username,
               review_id: review_id,
               created_at: Date.now(),
             },

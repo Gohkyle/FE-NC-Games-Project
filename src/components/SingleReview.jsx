@@ -57,7 +57,8 @@ if (pageErr) {
         className="single-review-img"
       />
       <div className="single-review-details">
-        <UserIcon owner={owner} />
+        <UserIcon user={owner} />
+        <h2>{owner}</h2>
         <p>{designer}</p>
         <p>{formatDate(created_at)}</p>
         <p>{review_body}</p>

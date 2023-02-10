@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<PageHome />}></Route>
-        <Route path="/login" element={<PageLogin />}></Route>
+        <Route path="/home" element={<PageHome />}></Route>
+        <Route path="/" element={<PageLogin />}></Route>
         <Route path="/reviews" element={<PageReviews />}></Route>
         <Route path="/reviews/:review_id" element={<PageReview />}></Route>
         <Route path="/reviews/add" element={<PageAddReview />}></Route>
