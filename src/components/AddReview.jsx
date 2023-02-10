@@ -1,6 +1,10 @@
 import {Loading} from './Loading'
 
 export const AddReview = () => {
-    return <Loading/>
-
+    return (
+        <section>
+            <p>add review page</p>
+            <Loading/>
+        </section>
+    )
 }
