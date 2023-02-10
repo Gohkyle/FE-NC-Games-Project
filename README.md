@@ -22,10 +22,10 @@ To make a local clone of the app, run
 
 This project uses a few packages that will need to be installed in ordered to run locally. Please see below for a summary.
 
-| Package                                                             | description         |
-| ------------------------------------------------------------------- | ------------------- |
-| [axios](https://axios-http.com/docs/intro)                          | http client,        |
-| [react-router-dom](https://reactrouter.com/en/main/start/overview)) | client side routing |
+| Package                                                            | description         |
+| ------------------------------------------------------------------ | ------------------- |
+| [axios](https://axios-http.com/docs/intro)                         | http client,        |
+| [react-router-dom](https://reactrouter.com/en/main/start/overview) | client side routing |
 
 To install, run `npm install`.
 
