@@ -103,6 +103,7 @@ ul {
 }
 .comment-card {
   display: grid;
+  position:relative;
   grid-template-columns: [img] 50px [details] auto;
   grid-template-rows: 50px auto 2em;
   grid-template-areas:
@@ -117,6 +118,13 @@ ul {
   border-radius: 10px;
   box-sizing: border-box;
 }
+
+.delete-button {
+  position: absolute;
+  right:1em;
+  top:1em;
+ }
+
 
 .comment-avatar-container {
   object-fit: cover;

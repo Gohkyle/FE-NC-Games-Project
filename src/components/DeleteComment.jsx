@@ -6,11 +6,10 @@ export const DeleteComment = ({ comment_id, isDeleting, setIsDeleting, setLocalC
     setIsDeleting(true);
     deleteComment(comment_id).then(()=>{
         setLocalCommentCount((currCount)=>currCount-1)
-        setIsDeleting(false);
+        // setIsDeleting(false);
         setIsDeleted(true);
     })
     .catch((err)=>{
-        setLocalCommentCount((currCount)=>currCount-1)
         setErr("Something went wrong, please try again")
     })
   };
