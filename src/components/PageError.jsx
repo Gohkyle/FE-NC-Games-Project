@@ -1,6 +1,6 @@
 import { Header } from "./Header"
 
-export const ErrorPage = () => {
+export const PageError = () => {
     return(
         <main>
             <Header/>

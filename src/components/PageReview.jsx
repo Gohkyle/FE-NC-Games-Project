@@ -1,7 +1,7 @@
 import {Header} from "./Header"
 import {SingleReview} from './SingleReview'
 
-export const ReviewPage =()=>{
+export const PageReview =()=>{
     return (
     <main>
         <Header/>

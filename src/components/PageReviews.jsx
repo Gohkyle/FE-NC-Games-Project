@@ -1,7 +1,7 @@
 import {Header} from './Header';
 import {Reviews} from './Reviews'
 
-export const ReviewsPage = () => {
+export const PageReviews = () => {
     return (
         <div>
             <Header/>
