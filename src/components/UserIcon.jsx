@@ -12,9 +12,5 @@ export const UserIcon = ({user}) => {
 
     const {username, avatar_url} = userIconDetails
     
-    return (
-        <article>
-            <img src={avatar_url} alt={`${username}'s avatar`} className="user-icon-img"/>
-        </article>
-    )
+    return (<img src={avatar_url} alt={`${username}'s avatar`} className="user-icon-img"/>)
 }
