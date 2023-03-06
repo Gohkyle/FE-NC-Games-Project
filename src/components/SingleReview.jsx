@@ -50,14 +50,18 @@ if (pageErr) {
     <Loading />
   ) : (
     <main className="single-review-container">
-      <h4 className="single-review-header">{title}</h4>
+      <div className="single-review-header">
+      <h4 >{title}</h4>
       <img
         src={review_img_url}
         alt={`BoardGame: ${title}`}
         className="single-review-img"
       />
+      </div >
       <div className="single-review-details">
-        <UserIcon user={owner} />
+        <div className="single-review-user-icon-container">
+          <UserIcon user={owner} />
+          </div>
         <h2>{owner}</h2>
         <p>{designer}</p>
         <p>{formatDate(created_at)}</p>
