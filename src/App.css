@@ -68,6 +68,10 @@ ul {
   padding-left: 5vw;
   padding-right: 5vw;
 }
+.single-review-user-icon-container{
+  width:50px;
+  border-radius: 50%;
+}
 
 .comments-list {
   box-sizing: border-box;
@@ -126,15 +130,15 @@ ul {
 
 
 .comment-avatar-container {
-  object-fit: cover;
   grid-area: "img";
   grid-column: 1/2;
   grid-row: 1/2;
   border-radius: 50%;
 }
-.comment-avatar {
+.user-icon-img {
   background-color: lightgrey;
   object-fit: cover;
+  width:100%
 }
 
 .comment-card-details {
