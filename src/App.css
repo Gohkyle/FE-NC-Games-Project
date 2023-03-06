@@ -52,7 +52,7 @@ ul {
 
 .single-review-img {
   object-fit: cover;
-  width: 100vw;
+  width: 100%;
   height: 45vh;
 }
 
@@ -60,10 +60,10 @@ ul {
   padding-left: 5vw;
   padding-right: 5vw;
 }
-.single-review-header {
+/* .single-review-header {
   padding-left: 5vw;
   padding-right: 5vw;
-}
+} */
 .single-review-details {
   padding-left: 5vw;
   padding-right: 5vw;
