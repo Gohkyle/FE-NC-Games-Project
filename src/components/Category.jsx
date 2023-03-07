@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom"
 import { formatCategoryName } from "../utils/utils"
 
-export const Category = ({category}) => {
-    const {slug,description}= category
+export const Category = ({category: {slug, description}}) => {
 
     return (
     <li className="category-card">
