@@ -1,5 +1,4 @@
 import { useContext} from "react"
-import { Loading } from "./Loading"
 import {UserContext} from '../contexts/User'
 import { LoginForm } from "./LoginForm"
 import { UserIcon } from "./UserIcon"
@@ -13,7 +12,6 @@ export const Login = () => {
         <section>
             <p>Welcome back {name}!</p>
             {username ?  <UserIcon user={username}/>: <LoginForm setLoggedInUser = {setLoggedInUser} /> }
-            <Loading/>
         </section>
     )
 }
