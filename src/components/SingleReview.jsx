@@ -57,22 +57,22 @@ export const SingleReview = () => {
   ) : (
     <main className="single-review-container">
       <div className="single-review-header">
-        <h4>{title}</h4>
         <img
           src={review_img_url}
           alt={`BoardGame: ${title}`}
           className="single-review-img"
-        />
+          />
       </div>
       <div className="single-review-details-container">
+          <h3>{title}</h3>
         <div className= "single-review-details-header">
           <div className="single-review-user-icon">
             <UserIcon user={owner} />
           </div>
           <div className="single-review-details">
-            <h2>{owner}</h2>
+            <h4>{owner}</h4>
             <p>{designer}</p>
-            <p>{formatDate(created_at)}</p>ß{" "}
+            <p>{formatDate(created_at)}</p>
           </div>
         </div>
         <p>{review_body}</p>
