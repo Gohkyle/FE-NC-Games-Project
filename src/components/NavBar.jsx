@@ -7,9 +7,12 @@ import {UserIcon} from './UserIcon'
 export const NavBar=() =>{
     const {loggedInUser:{username}} = useContext(UserContext)
 
-    return (<nav>
-        <Link to="/" className="Nav-item">{username? <div className="nav-bar-login-container"><p>{username}</p><UserIcon user={username}/></div> : "Login"}</Link>
-        <Link to="/home" className ="Nav-item">Home</Link>
-        <Link to="/reviews/add" className="Nav-item">Write a Review</Link>
+    return (
+    <nav>
+        <Link to="/" className="nav-item">
+            {username? <div className="nav-login-container"><p>{username}</p><UserIcon user={username}/></div> : "Login"}
+        </Link>
+        <Link to="/home" className ="nav-item">Home</Link>
+        <Link to="/reviews/add" className="nav-item">Write a Review</Link>
     </nav>)
 }
