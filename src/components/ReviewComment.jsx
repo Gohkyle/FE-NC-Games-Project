@@ -7,14 +7,15 @@ export const ReviewComment = ({comment_count, setIsHidden}) => {
   };
 
   return (
-    <span>
-      {comment_count}
+    <div className="single-review-comment">
+      <p>{comment_count}</p>
+
       <input
         alt="comments"
         onClick={handleCommentClick}
         type="image"
         src={comment}
       />
-    </span>
+    </div>
   );
 };

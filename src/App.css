@@ -91,7 +91,20 @@ h4{
 .single-review-details{
 
 }
-
+.single-review-comment-bar{
+  margin: 10px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly
+}
+.single-review-voting{
+  display: flex;
+  flex-direction:row
+}
+.single-review-comment{
+  display:flex;
+  flex-direction: row;
+}
 
 
 .comments-list {
