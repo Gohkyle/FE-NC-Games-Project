@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getReview } from "../utils/api-requests";
 import { useParams } from "react-router-dom";
 import { formatDate } from "../utils/utils";
@@ -8,8 +8,12 @@ import { Comments } from "./Comments";
 import { Error } from "./Error";
 import { ReviewVoting } from "./ReviewVoting";
 import { ReviewComment } from "./ReviewComment";
+import { UserContext } from "../contexts/User";
+
 
 export const SingleReview = () => {
+  const { loggedInUser: {username} } = useContext(UserContext);
+
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
@@ -17,6 +21,7 @@ export const SingleReview = () => {
 
   const [err, setErr] = useState(null);
   const [pageErr, setPageErr] = useState(null);
+
   const { review_id } = useParams();
 
   const {
@@ -61,11 +66,11 @@ export const SingleReview = () => {
           src={review_img_url}
           alt={`BoardGame: ${title}`}
           className="single-review-img"
-          />
+        />
       </div>
       <div className="single-review-details-container">
-          <h3>{title}</h3>
-        <div className= "single-review-details-header">
+        <h3>{title}</h3>
+        <div className="single-review-details-header">
           <div className="single-review-user-icon">
             <UserIcon user={owner} />
           </div>
@@ -77,18 +82,23 @@ export const SingleReview = () => {
         </div>
         <p>{review_body}</p>
         {err ? <Error err={err} /> : null}
-        <span>
-          <ReviewVoting
-            err={err}
-            review_id={review_id}
-            setErr={setErr}
-            votes={votes}
-          />
-          <ReviewComment
-            setIsHidden={setIsHidden}
-            comment_count={localCommentCount}
-          />
-        </span>
+
+        {!username ? (
+          <p> Please Login to Like/Comment</p>
+        ) : (
+          <div className="single-review-comment-bar">
+            <ReviewVoting
+              err={err}
+              review_id={review_id}
+              setErr={setErr}
+              votes={votes}
+              />
+            <ReviewComment
+              setIsHidden={setIsHidden}
+              comment_count={localCommentCount}
+              />
+              </div>
+        )}
         {isHidden ? null : (
           <Comments
             setIsHidden={setIsHidden}
