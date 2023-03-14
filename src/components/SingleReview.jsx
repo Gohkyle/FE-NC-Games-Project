@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from "react";
-import { getReview } from "../utils/api-requests";
+import { getReview, getUser} from "../utils/api-requests";
 import { useParams } from "react-router-dom";
 import { formatDate } from "../utils/utils";
-import { UserIcon } from "./UserIcon";
 import { Loading } from "./Loading";
 import { Comments } from "./Comments";
 import { Error } from "./Error";
@@ -10,14 +9,14 @@ import { ReviewVoting } from "./ReviewVoting";
 import { ReviewComment } from "./ReviewComment";
 import { UserContext } from "../contexts/User";
 
-
 export const SingleReview = () => {
-  const { loggedInUser: {username} } = useContext(UserContext);
+  const {loggedInUser: { username}} = useContext(UserContext);
 
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
   const [localCommentCount, setLocalCommentCount] = useState(0);
+  const [userIconUrl, setUserIconUrl] = useState(null)
 
   const [err, setErr] = useState(null);
   const [pageErr, setPageErr] = useState(null);
@@ -41,6 +40,10 @@ export const SingleReview = () => {
         setReview(reviewFromApi);
         setLocalCommentCount(comment_count);
         setIsLoading(false);
+        return getUser(reviewFromApi.owner)
+      })
+      .then(({avatar_url})=>{
+        setUserIconUrl(avatar_url)
       })
       .catch(
         ({
@@ -72,7 +75,7 @@ export const SingleReview = () => {
         <h3>{title}</h3>
         <div className="single-review-details-header">
           <div className="single-review-user-icon">
-            <UserIcon user={owner} />
+          <img src={userIconUrl} alt={`${owner}'s avatar`} className="user-icon-img"/>
           </div>
           <div className="single-review-details">
             <h4>{owner}</h4>
@@ -92,12 +95,12 @@ export const SingleReview = () => {
               review_id={review_id}
               setErr={setErr}
               votes={votes}
-              />
+            />
             <ReviewComment
               setIsHidden={setIsHidden}
               comment_count={localCommentCount}
-              />
-              </div>
+            />
+          </div>
         )}
         {isHidden ? null : (
           <Comments
