@@ -5,7 +5,7 @@ import { Loading } from "./Loading";
 import { useParams } from 'react-router-dom'
 import { formatCategoryName } from "../utils/utils";
 import { Error } from "./Error";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import {Sort} from './Sort'
 
 export const Reviews = () => {
@@ -15,18 +15,19 @@ export const Reviews = () => {
   const {category} = useParams()
   const [err, setErr] = useState(null)
 
+  const {state} = useLocation()
   let [searchParams, setSearchParams] = useSearchParams()
   const sortByQuery = searchParams.get("sort_by")
   const orderQuery = searchParams.get('order');
- 
+
   useEffect(() => {
     getReviews(category, sortByQuery, orderQuery).then((reviewsFromApi) => {
         setReviews(reviewsFromApi);
         setIsLoading(false)
         category ? setTitle(category) : setTitle('all games')
       })
-      .catch(({response:{data:{msg}}})=>{
-        setErr(msg)
+      .catch(({response})=>{
+        response ? setErr(response.data.msg) : setErr("Something went wrong, please try again.")
       })
     }
   , [category, sortByQuery, orderQuery]);
@@ -35,9 +36,10 @@ export const Reviews = () => {
     <main>
       <div className="banner">
         <h2>{formatCategoryName(title)}</h2>
+        {state ? <p>{state.description}</p> : null}
       </div>
       <Sort category= {category} setSearchParams={setSearchParams}/>
-        {isLoading ? err ? <Error err={err}/> : <Loading/>:
+        {err ? <Error err={err}/> : isLoading? <Loading/>:
       <ul className="reviews-flex-container">
         {reviews.map((review) => {
           return (
