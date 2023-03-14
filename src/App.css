@@ -11,6 +11,7 @@ p {
   margin:0.5em
 }
 
+
 h3{
   margin:0.5em
 }
@@ -263,6 +264,8 @@ header{
   background-color:#fefefe
 }
 
+.loading-container{
+}
 .loading-logo {
   width:3em;
   animation-name: penguin-hop;
@@ -305,3 +308,20 @@ a:hover{
 }
 
 a:active{}
+
+
+.login-form{
+  display:flex;
+  flex-direction:column;
+  margin:auto;
+  width: 50vw;
+  
+}
+.login-form-item{
+  text-align:center;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  border: 0px;
+  box-shadow:  4px 4px 10px rgba(0, 0, 0, 0.4);
+}
