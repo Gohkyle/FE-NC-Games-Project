@@ -7,15 +7,19 @@ import { Loading } from "./Loading";
 export const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [err, setErr] = useState(null)
 
   useEffect(() => {
     getCategories().then((categoriesFromApi) => {
       setIsLoading(false);
       setCategories(categoriesFromApi);
     })
+    .catch((err)=>{
+      setErr("Something went wrong, please try again.")
+    })
   }, []);
 
-  return isLoading ? (
+  return err? <p>{err}</p> : isLoading ? (
     <Loading />
   ) : (
     <section>
