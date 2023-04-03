@@ -24,6 +24,7 @@ export const Login = ({ setLoggedInUser, setIsLoading, setErr }) => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
+      <p>Hint: jessjelly</p>
       <input
         aria-label="username"
         placeholder="Username"
@@ -34,7 +35,7 @@ export const Login = ({ setLoggedInUser, setIsLoading, setErr }) => {
           setInputUser(event.target.value);
         }}
         type="text"
-      ></input>
+        ></input>
       <button className="login-form-item">Login</button>
     </form>
   );
