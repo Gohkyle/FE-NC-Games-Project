@@ -6,7 +6,7 @@ export const Category = ({category: {slug, description}}) => {
     return (
     <li className="category-card">
         <Link to={`/category/${slug}`} state={{description}}>
-            <h2>{formatCategoryName(slug)}</h2>
+                <h2>{formatCategoryName(slug)}</h2>
         </Link>
     </li>
     )
