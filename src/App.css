@@ -168,11 +168,7 @@ h4{
   grid-row: 1/2;
   border-radius: 50%;
 }
-.user-icon-img {
-  background-color: lightgrey;
-  width:100%;
- 
-}
+
 
 .comment-card-details {
   grid-area: "details";
@@ -232,9 +228,18 @@ nav {
   justify-content: center;
 }
 
+.user-icon-container {
+  background-color: pink;
+  border-radius: 50%;
+  width:100px;
+  height:100px;
+}
+
 .user-icon-img{
- height: 100%;
- width:auto;
+  height: 100%;
+ width: 100%;
+ border-radius:50%;
+ border: 0px;
  object-fit:contain;
 }
 
@@ -279,7 +284,7 @@ header{
   10% {transform: translateY(-0.5em)}
   15% {transform: translateY(-0.75em)}
   20% {transform: translateY(-0.5em)}
-  25% {transform:translateY(0em)}
+  25% {transform: translateY(0em)}
 }
 
 a{
@@ -302,18 +307,23 @@ a:hover{
 
 a:active{}
 
+/* Login Page*/
+
 .login-form{
   display:flex;
   flex-direction:column;
-  margin:auto;
+  align-items: center;
+  margin: 25%;
   width: 50vw;
   
 }
 .login-form-item{
+  box-sizing:border-box;
   text-align:center;
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
   border: 0px;
-  box-shadow:  4px 4px 10px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 }
