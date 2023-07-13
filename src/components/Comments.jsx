@@ -23,9 +23,9 @@ export const Comments = ({ setIsHidden, setLocalCommentCount }) => {
     <section className="comments-modal">
       <div className="comments-modal-content">
         <div className="comments-header">
-          
+  
         </div>
-        <CloseButton setIsHidden={setIsHidden} />
+        <CloseButton setIsHidden={setIsHidden } />
         <p>Comments</p>
         {isDeleted ? <p>comment successfully deleted</p> : null}
         <AddComment
